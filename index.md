@@ -59,6 +59,7 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```c++
+//code for accelerometer/micro
 #include <Wire.h>
 
 #define MPU6050_ADDRESS 0x68
@@ -121,6 +122,136 @@ void determineGesture()
   {
     Serial1.write('s');
   }
+}
+
+//code for the car/uno
+#include <SoftwareSerial.h>
+#define tx 2
+#define rx 3
+
+SoftwareSerial BT_Serial(2, 3); // RX pin, TX pin
+
+char receive = "";
+
+int AIA = 10; //front left back
+int AIB = 9 ;//front left forward
+int BIA = 11; //back left back
+int BIB = 12; //back left forward
+int aia = 4;//back right forward
+int aib = 5; //back right back
+int bia = 6; //front right forward
+int bib = 7; //front right back
+
+
+void setup() {
+  //begins communication between bluetooth modules
+  Serial.begin(38400);
+  BT_Serial.begin(38400);
+  pinMode(tx, OUTPUT);
+  pinMode(rx, INPUT);
+
+  //sets all motor pins to output
+  pinMode(AIA, OUTPUT);
+  pinMode(AIB, OUTPUT);
+  pinMode(BIA, OUTPUT);
+  pinMode(BIB, OUTPUT);
+  pinMode(aia, OUTPUT);
+  pinMode(aib, OUTPUT);
+  pinMode(bia, OUTPUT);
+  pinMode(bib, OUTPUT);
+}
+
+void loop() {
+  //reads accel sent data
+  if(BT_Serial.available() > 0)
+  {
+    receive = (char) BT_Serial.read();
+    Serial.println(receive);
+  }
+
+  //switches receive variable to whatever case is determined
+  switch(receive)
+  {
+    case 'f':
+      forward();
+      break;
+
+    case 'b':
+      backward();
+      break;
+    
+    case 'r':
+      turnRight();
+      break;
+    
+    case 'l':
+      turnLeft();
+      break;
+    
+    case 's':
+      stop();
+  }
+}
+
+//turns motors off and on accordingly per movement
+void forward()
+{
+  digitalWrite(AIA, LOW);
+  digitalWrite(AIB, HIGH);
+  digitalWrite(BIA, LOW);
+  digitalWrite(BIB, HIGH);
+  digitalWrite(aia, HIGH);
+  digitalWrite(aib, LOW);
+  digitalWrite(bia, HIGH);
+  digitalWrite(bib, LOW);
+}
+
+void backward()
+{
+  digitalWrite(AIA, HIGH);
+  digitalWrite(AIB, LOW);
+  digitalWrite(BIA, HIGH);
+  digitalWrite(BIB, LOW);
+  digitalWrite(aia, LOW);
+  digitalWrite(aib, HIGH);
+  digitalWrite(bia, LOW);
+  digitalWrite(bib, HIGH);
+}
+
+void turnLeft()
+{
+  digitalWrite(AIA, LOW);
+  digitalWrite(AIB, HIGH);
+  digitalWrite(BIA, HIGH);
+  digitalWrite(BIB, LOW);
+  digitalWrite(aia, HIGH);
+  digitalWrite(aib, LOW);
+  digitalWrite(bia, LOW);
+  digitalWrite(bib, HIGH);
+}
+
+void turnRight()
+{
+  digitalWrite(AIA, HIGH);
+  digitalWrite(AIB, LOW);
+  digitalWrite(BIA, LOW);
+  digitalWrite(BIB, HIGH);
+  digitalWrite(aia, LOW);
+  digitalWrite(aib, HIGH);
+  digitalWrite(bia, HIGH);
+  digitalWrite(bib, LOW);
+}
+
+void stop()
+{
+  digitalWrite(AIA, LOW);
+  digitalWrite(AIB, LOW);
+  digitalWrite(BIA, LOW);
+  digitalWrite(BIB, LOW);
+  digitalWrite(aia, LOW);
+  digitalWrite(aib, LOW);
+  digitalWrite(bia, LOW);
+  digitalWrite(bib, LOW);
 }
 
 ```
