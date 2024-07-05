@@ -2,7 +2,8 @@
 In this project, I assembled a robotic car that can be controlled by hand motions. This is possible because of an accelerometer that is attached to the back of a user's hand that allows the movements of the user to be tracked and used to control a robotic car. This gesture control system opens up a world of possibility where huge machines can move with organic movements produced by a human user.
 
 ```You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:```
-```HTML
+```
+HTML
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
 ```
@@ -11,10 +12,11 @@ In this project, I assembled a robotic car that can be controlled by hand motion
 |:--:|:--:|:--:|:--:|
 | Chloe G. | Carondelet High School | Engineering | Incoming Junior
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
+```**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**```
 
 ![Headstone Image](logo.svg)
   
+```
 # Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -39,11 +41,12 @@ For your second milestone, explain what you've worked on since your previous mil
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
+- What needs to be completed before your final milestone
+```
 
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+```**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**```
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -56,6 +59,7 @@ For your first milestone, describe what your project is and how you plan to buil
 ```
 My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. I am still trying to figure out this problem, though I have tried many things that have all not worked. I assume it is a lack of voltage problem, but I need to investigate further to figure this out. Because of this, I have decided to set the car portion aside for now and to work on the accelerometer/glove part of the project.
 
+```
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
@@ -76,8 +80,10 @@ void loop() {
 ```
 
 # Bill of Materials
+```
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
+Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs.
+```
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -98,7 +104,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 | Multimeter Voltage Testing | Used for fixing circuits by measuring voltage | $12.99 | <a href="https://www.amazon.com/AstroAI-Digital-Multimeter-Voltage-Tester/dp/B01ISAMUA6/ref=sxin_17_pa_sp_search_thematic_sspa?content-id=amzn1.sym.e8da13fc-7baf-46c3-926a-e7e8f63a520b%3Aamzn1.sym.e8da13fc-7baf-46c3-926a-e7e8f63a520b&cv_ct_cx=digital+multimeter&dib=eyJ2IjoiMSJ9.5LQumrfBR8l0mKnJCJlRg73dxpou0gqYD_ffU3srgs0Utegwth8GcQCSVXVzeZeLSJx5J3itz5TLdmJHsrVITQ.-00jRPoT-bBy26YC4LzQ-S4cYdztgmSMGb83_WEm6HY&dib_tag=se&keywords=digital+multimeter&pd_rd_i=B01ISAMUA6&pd_rd_r=e1ff2570-7e4a-4906-bc55-6f819d48d1bc&pd_rd_w=h7HgL&pd_rd_wg=0ZcFH&pf_rd_p=e8da13fc-7baf-46c3-926a-e7e8f63a520b&pf_rd_r=R6YKX3NXTDQ1PQP4H8RM&qid=1715911879&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=1-1-7efdef4d-9875-47e1-927f-8c2c1c47ed49-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1"> Link </a> |
 
 
-
+```
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
@@ -106,3 +112,4 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
 To watch the BSE tutorial on how to create a portfolio, click here.
+```
