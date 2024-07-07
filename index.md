@@ -66,7 +66,8 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 int16_t accelX, accelY, accelZ;
 
-void setup() {
+void setup() 
+{
   Wire.begin();
   Serial1.begin(38400);
 
@@ -102,19 +103,19 @@ void readAccelerometerData()
 void determineGesture()
 {
   //determines movement based on accel data
-  if (accelY >= 6500)
-  {
-    Serial1.write('f');
-  }
-  else if (accelY <= -4000)
+  if (accelX >= 6500)
   {
     Serial1.write('b');
   }
-  else if (accelX <= -3250)
+  else if (accelX <= -3500)
+  {
+    Serial1.write('f');
+  }
+  else if (accelY <= -3000)
   {
     Serial1.write('l');
   }
-  else if (accelX >=3250)
+  else if (accelY >= 3250)
   {
     Serial1.write('r');
   }
@@ -129,7 +130,7 @@ void determineGesture()
 #define tx 2
 #define rx 3
 
-SoftwareSerial BT_Serial(2, 3); // RX pin, TX pin
+SoftwareSerial BT_Serial(rx, tx); // RX pin, TX pin
 
 char receive = "";
 
@@ -163,7 +164,7 @@ void setup() {
 
 void loop() {
   //reads accel sent data
-  if(BT_Serial.available() > 0)
+  if(BT_Serial.available())
   {
     receive = (char) BT_Serial.read();
     Serial.println(receive);
@@ -220,26 +221,26 @@ void backward()
 
 void turnLeft()
 {
-  digitalWrite(AIA, LOW);
-  digitalWrite(AIB, HIGH);
+  digitalWrite(AIA, HIGH);
+  digitalWrite(AIB, LOW);
   digitalWrite(BIA, HIGH);
   digitalWrite(BIB, LOW);
   digitalWrite(aia, HIGH);
   digitalWrite(aib, LOW);
-  digitalWrite(bia, LOW);
-  digitalWrite(bib, HIGH);
+  digitalWrite(bia, HIGH);
+  digitalWrite(bib, LOW);
 }
 
 void turnRight()
 {
-  digitalWrite(AIA, HIGH);
-  digitalWrite(AIB, LOW);
+  digitalWrite(AIA, LOW);
+  digitalWrite(AIB, HIGH);
   digitalWrite(BIA, LOW);
   digitalWrite(BIB, HIGH);
   digitalWrite(aia, LOW);
   digitalWrite(aib, HIGH);
-  digitalWrite(bia, HIGH);
-  digitalWrite(bib, LOW);
+  digitalWrite(bia, LOW);
+  digitalWrite(bib, HIGH);
 }
 
 void stop()
