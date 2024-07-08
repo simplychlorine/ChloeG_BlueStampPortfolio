@@ -1,22 +1,22 @@
 # Motion and Hand Gesture Controlled Robotic Car
 In this project, I assembled a robotic car that can be controlled by hand motions. This is possible because of an accelerometer that is attached to the back of a user's hand that allows the movements of the user to be tracked and used to control a robotic car. This gesture control system opens up a world of possibility where huge machines can move with organic movements produced by a human user.
 
-```You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:```
-```
+<!---You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
+
 HTML
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
-```
+
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Chloe G. | Carondelet High School | Engineering | Incoming Junior
 
-```**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**```
+<!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
   
-```
+
 # Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -28,35 +28,36 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE
-
+--->
 
 
 # Second Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+<!---**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**--->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone
-```
+For my second milestone, I focused on finishing my base project. I started by assembling the car by securing the motors to the chassis with screws and firmly securing the top and bottom of the car together. Then, I worked on the code for the car (see code below). We were given some code from a previous student to work off of, and I started by copying this code into my IDE. Then, I changed some variable names for convenience and altered some of the code relating to the motor drivers and pins (because we are using a different motor driver than he did) and tested my code by running each individual forward, backward, turning left and right, and stopping methods. Thankfully, this worked without much difficulty. After this, I moved on to the accelerometer code (see code below). Again, I used the given code, but there was much less to alter this time. 
+Once I finished the code, I was technically done with my project, but I couldn't test it because I was waiting on a new battery and a new Arduino Micro (I had accidentally broken a part of it while trying to plug it into the breadboard). When the parts came, I plugged in the battery and fortunately, the motors could run by themselves! However, when I tried to move my hand to control the car, the car wouldn't move. I discovered that I had forgotten to wire the accelerometer to a voltage source and a ground source, so I quickly fixed that. After powering on both devices, the car would move, but whenever I tried to turn the car left or right, it would just spin erratically. I reviewed my code and figured out that the wheels were not moving in the right way to turn the car, so I switched some values. Finally, my car worked without much difficulty! I spent some time slightly adjusting the accelerometer thresholds necessary to move the car so I didn't have to drastically twist my hand to move it, and I was satisfied with the outcome.
+Going forward I will attempt to implement my speed control modifications for the car, involving flex sensors. This will require me to change a significant amount of the code and the wiring, but I know how to work with the materials better after the completion of the base project.
+
 
 # First Milestone
 
-```**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**```
+<!---**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**--->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/n56hmZyyAvU?si=b752a43eYWyGz08m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. After further testing and with the help of the instructors, we figured out that the problem was probably related to the battery and its voltage. Because of this, I have asked to be sent a new battery that I will test in my second milestone. I will move on by assembling the car itself and figuring out the code for the motion controls. 
+
+My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. 
+However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. After further testing and with the help of the instructors, we figured out that the problem was probably related to the battery and its voltage. Because of this, I have asked to be sent a new battery that I will test in my second milestone. 
+I will move on by assembling the car itself and figuring out the code for the motion controls. 
 
 
-# Schematics 
+<!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
 # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
+Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. --->
 
 ```c++
 //code for accelerometer/micro
@@ -258,9 +259,9 @@ void stop()
 ```
 # Bill of Materials
 
-Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs.
-```
+<!---Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
+Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs.--->
+
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -281,7 +282,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 | Multimeter Voltage Testing | Used for fixing circuits by measuring voltage | $12.99 | <a href="https://www.amazon.com/AstroAI-Digital-Multimeter-Voltage-Tester/dp/B01ISAMUA6/ref=sxin_17_pa_sp_search_thematic_sspa?content-id=amzn1.sym.e8da13fc-7baf-46c3-926a-e7e8f63a520b%3Aamzn1.sym.e8da13fc-7baf-46c3-926a-e7e8f63a520b&cv_ct_cx=digital+multimeter&dib=eyJ2IjoiMSJ9.5LQumrfBR8l0mKnJCJlRg73dxpou0gqYD_ffU3srgs0Utegwth8GcQCSVXVzeZeLSJx5J3itz5TLdmJHsrVITQ.-00jRPoT-bBy26YC4LzQ-S4cYdztgmSMGb83_WEm6HY&dib_tag=se&keywords=digital+multimeter&pd_rd_i=B01ISAMUA6&pd_rd_r=e1ff2570-7e4a-4906-bc55-6f819d48d1bc&pd_rd_w=h7HgL&pd_rd_wg=0ZcFH&pf_rd_p=e8da13fc-7baf-46c3-926a-e7e8f63a520b&pf_rd_r=R6YKX3NXTDQ1PQP4H8RM&qid=1715911879&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=1-1-7efdef4d-9875-47e1-927f-8c2c1c47ed49-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1"> Link </a> |
 
 
-```
+<!---
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
@@ -289,4 +290,4 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
 To watch the BSE tutorial on how to create a portfolio, click here.
-```
+--->
