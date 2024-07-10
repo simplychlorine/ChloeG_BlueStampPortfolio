@@ -1,12 +1,6 @@
 # Motion and Hand Gesture Controlled Robotic Car
 In this project, I assembled a robotic car that can be controlled by hand motions. This is possible because of an accelerometer that is attached to the back of a user's hand that allows the movements of the user to be tracked and used to control a robotic car. This gesture control system opens up a world of possibility where huge machines can move with organic movements produced by a human user.
 
-<!---You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
-
-HTML
-<!--- This is an HTML comment in Markdown -->
-<!--- Anything between these symbols will not render on the published site -->
-
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -15,6 +9,7 @@ HTML
 <!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)--->
+
 
 # First Milestone
 
