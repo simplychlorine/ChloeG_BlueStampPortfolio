@@ -14,10 +14,27 @@ HTML
 
 <!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
-![Headstone Image](logo.svg)
-  
+![Headstone Image](logo.svg)--->
 
-# Final Milestone
+# First Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/COc-jXujoRc?si=yAsBBilBZ7alfK2S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. 
+However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. After further testing and with the help of the instructors, we figured out that the problem was probably related to the battery and its voltage. Because of this, I have asked to be sent a new battery that I will test in my second milestone. 
+I will move on by assembling the car itself and figuring out the code for the motion controls. 
+
+
+# Second Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VfdK9m_uzHs?si=8wXze18zXyGmTyZD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+For my second milestone, I focused on finishing my base project. I started by assembling the car by securing the motors to the chassis with screws and firmly securing the top and bottom of the car together. Then, I worked on the code for the car (see code below). We were given some code from a previous student to work off of, and I started by copying this code into my IDE. Then, I changed some variable names for convenience and altered some of the code relating to the motor drivers and pins (because we are using a different motor driver than he did) and tested my code by running each individual forward, backward, turning left and right, and stopping methods. Thankfully, this worked without much difficulty. After this, I moved on to the accelerometer code (see code below). Again, I used the given code, but there was much less to alter this time. 
+Once I finished the code, I was technically done with my project, but I couldn't test it because I was waiting on a new battery and a new Arduino Micro (I had accidentally broken a part of it while trying to plug it into the breadboard). When the parts came, I plugged in the battery and fortunately, the motors could run by themselves! However, when I tried to move my hand to control the car, the car wouldn't move. I discovered that I had forgotten to wire the accelerometer to a voltage source and a ground source, so I quickly fixed that. After powering on both devices, the car would move, but whenever I tried to turn the car left or right, it would just spin erratically. I reviewed my code and figured out that the wheels were not moving in the right way to turn the car, so I switched some values. Finally, my car worked without much difficulty! I spent some time slightly adjusting the accelerometer thresholds necessary to move the car so I didn't have to drastically twist my hand to move it, and I was satisfied with the outcome.
+Going forward I will attempt to implement my speed control modifications for the car, involving flex sensors. This will require me to change a significant amount of the code and the wiring, but I know how to work with the materials better after the completion of the base project.
+
+
+<!--# Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
@@ -28,29 +45,8 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE
---->
+-->
 
-
-# Second Milestone
-
-<!---**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**--->
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VfdK9m_uzHs?si=FHSFLpT66rwN69Wl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-For my second milestone, I focused on finishing my base project. I started by assembling the car by securing the motors to the chassis with screws and firmly securing the top and bottom of the car together. Then, I worked on the code for the car (see code below). We were given some code from a previous student to work off of, and I started by copying this code into my IDE. Then, I changed some variable names for convenience and altered some of the code relating to the motor drivers and pins (because we are using a different motor driver than he did) and tested my code by running each individual forward, backward, turning left and right, and stopping methods. Thankfully, this worked without much difficulty. After this, I moved on to the accelerometer code (see code below). Again, I used the given code, but there was much less to alter this time. 
-Once I finished the code, I was technically done with my project, but I couldn't test it because I was waiting on a new battery and a new Arduino Micro (I had accidentally broken a part of it while trying to plug it into the breadboard). When the parts came, I plugged in the battery and fortunately, the motors could run by themselves! However, when I tried to move my hand to control the car, the car wouldn't move. I discovered that I had forgotten to wire the accelerometer to a voltage source and a ground source, so I quickly fixed that. After powering on both devices, the car would move, but whenever I tried to turn the car left or right, it would just spin erratically. I reviewed my code and figured out that the wheels were not moving in the right way to turn the car, so I switched some values. Finally, my car worked without much difficulty! I spent some time slightly adjusting the accelerometer thresholds necessary to move the car so I didn't have to drastically twist my hand to move it, and I was satisfied with the outcome.
-Going forward I will attempt to implement my speed control modifications for the car, involving flex sensors. This will require me to change a significant amount of the code and the wiring, but I know how to work with the materials better after the completion of the base project.
-
-
-# First Milestone
-
-<!---**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**--->
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/COc-jXujoRc?si=I4YD4cevpYayzTFC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. 
-However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. After further testing and with the help of the instructors, we figured out that the problem was probably related to the battery and its voltage. Because of this, I have asked to be sent a new battery that I will test in my second milestone. 
-I will move on by assembling the car itself and figuring out the code for the motion controls. 
 
 
 <!---# Schematics 
@@ -258,10 +254,6 @@ void stop()
 
 ```
 # Bill of Materials
-
-<!---Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs.--->
-
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
