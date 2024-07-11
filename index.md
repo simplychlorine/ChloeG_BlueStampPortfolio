@@ -15,7 +15,7 @@ In this project, I assembled a robotic car that can be controlled by hand motion
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/COc-jXujoRc?si=yAsBBilBZ7alfK2S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty. 
+My first milestone involved pairing my bluetooth modules and doing the wiring and coding for the car part of my project. My project involves two bluetooth modules that communicate with each other. One takes in input from the accelerometer as the user moves their hand to move the car while the other receives this information and instructs the motor driver on how to move the wheels of the robot car. The first thing I did for this milestone was link the two bluetooth modules. This was done by wiring both modules to their respective boards (one to the Arduino Uno and one to the Arduino Micro; see schematics below). Then, I sent the boards their respective code (written below). But, I faced some problems with the wiring. My jumper wires became too jumbled for me to track where they were going, so I had to redo the wiring to make the circuit cleaner and easier to navigate. Besides this problem, I managed to initially link the modules without too much difficulty.
 However, I faced a major problem later on, as I began the wiring for the motors. I didn't face too many problems initially, as I got the motors all linked up and inputted the code to test their movement (diagram and code listed below). But, the motors would only move when I connected the Uno to my computer. Whenever I tried running the motors just off of a single 9V battery, they wouldn't move. After further testing and with the help of the instructors, we figured out that the problem was probably related to the battery and its voltage. Because of this, I have asked to be sent a new battery that I will test in my second milestone. 
 I will move on by assembling the car itself and figuring out the code for the motion controls. 
 
@@ -45,13 +45,66 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 
 <!---# Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
 
 # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. --->
+<!--Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. --->
 
+Code for initial bluetooth pairing and testing:
 ```c++
-//code for accelerometer/micro
+//Code for Arduino Micro
+
+void setup()
+{
+  Serial.begin(38400);
+  Serial1.begin(38400);
+}
+
+void loop()
+{
+  if (Serial1.available())
+  {
+    Serial.print((char)Serial1.read());  
+  }
+  if (Serial.available())
+  {
+    Serial1.write(Serial.read());
+  }
+}
+
+//Code for Arduino Uno
+
+#include <SoftwareSerial.h>
+
+#define tx 2
+#define rx 3
+
+SoftwareSerial configBt(rx, tx);
+long tm, t, d;
+
+void setup()
+{
+  Serial.begin(38400);
+  configBt.begin(38400);
+  pinMode(tx, OUTPUT);
+  pinMode(rx, INPUT);
+}
+
+void loop()
+{
+  if (configBt.available())
+  {
+    Serial.print((char)configBt.read());
+  }
+  if (Serial.available())
+  {
+    configBt.write(Serial.read());
+  }
+}
+```
+
+Code for the glove/controller:
+```c++
 #include <Wire.h>
 
 #define MPU6050_ADDRESS 0x68
@@ -134,8 +187,10 @@ int aia = 4;//back right forward
 int aib = 5; //back right back
 int bia = 6; //front right forward
 int bib = 7; //front right back
+```
 
-
+Code for the car:
+```c++
 void setup() {
   //begins communication between bluetooth modules
   Serial.begin(38400);
@@ -246,8 +301,9 @@ void stop()
   digitalWrite(bia, LOW);
   digitalWrite(bib, LOW);
 }
-
 ```
+
+
 # Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
