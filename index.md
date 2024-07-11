@@ -169,8 +169,10 @@ void determineGesture()
     Serial1.write('s');
   }
 }
+```
 
-//code for the car/uno
+Code for the car:
+```c++
 #include <SoftwareSerial.h>
 #define tx 2
 #define rx 3
@@ -187,10 +189,7 @@ int aia = 4;//back right forward
 int aib = 5; //back right back
 int bia = 6; //front right forward
 int bib = 7; //front right back
-```
 
-Code for the car:
-```c++
 void setup() {
   //begins communication between bluetooth modules
   Serial.begin(38400);
