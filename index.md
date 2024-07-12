@@ -29,13 +29,13 @@ Once I finished the code, I was technically done with my project, but I couldn't
 Going forward I will attempt to implement my speed control modifications for the car, involving flex sensors. This will require me to change a significant amount of the code and the wiring, but I know how to work with the materials better after the completion of the base project.
 
 
-<!--# Final Milestone
-
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+# Final Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For your final milestone, explain the outcome of your project. Key details to include are:
+For my final milestone, I began by changing some of my code to implement my flex sensors. I first wrote the code for the Arduino Micro to take in the input from the flex sensors and determine which command to send to the Uno. This was the hardest piece to code, as I had to figure out how to take in input from a completely new device (the code given to us to take input from the accelerometer could not be used for the flex sensors). But, I achieved this without much difficulty, and I moved on to writing the code for the Uno to receive the commands from the Micro (see code below). Finally, I wrote a new command to change the byte speed to increase or decrease the car's speed depending on the input from the flex sensors. This was quite simple to code because I just had to add a new variable to the program. However, it was quite difficult to figure out how to rewire the car in order to allow the speed of the motors to change. I came to the conclusion that I had to rewire all of the motors, putting one of each of their wires into analog pins in order to allow me to change their speed by changing the byte speed input with a command. After fully rewiring the car, I moved on to my controller glove, where I had to rewire the voltage and ground wires for all of the devices connected to the glove to accommodate the new flex sensor devices. Once all of this was done, my project was finally finished! This project was very fun to complete, but also one of the most challenging things I have ever taken on. Throughout the course of this project, I had to learn how to code with Arduino and how to create circuits, two things I had zero experience with before. It was also very difficult to figure out how to follow the schematics and instructions given to us, as I didn't know how to read circuit diagrams or how to use any of the parts sent to me. However, with the help of my instructors and through perseverance, I managed to grasp the new concepts and complete my project. By the end of this program, I now know how to code with Arduino, how to create circuits with Arduino boards, how to use breadboards, and how to create circuits with motors. Going forward, I hope to use these newfound skills to learn more about robotics and coding, particularly for a future career in engineering. This program provided me with great exposure to engineering, and I hope to pursue and explore this field further going forward.
+
+<!--For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
@@ -43,9 +43,9 @@ For your final milestone, explain the outcome of your project. Key details to in
 -->
 
 
-
 <!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
+
 
 # Code
 <!--Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. --->
