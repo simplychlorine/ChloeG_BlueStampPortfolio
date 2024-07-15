@@ -1,6 +1,8 @@
 # Motion and Hand Gesture Controlled Robotic Car
-In this project, I assembled a robotic car that can be controlled by hand motions. This is possible because of an accelerometer that is attached to the back of a user's hand that allows the movements of the user to be tracked and used to control a robotic car. This gesture control system opens up a world of possibility where huge machines can move with organic movements produced by a human user.
 
+In this project, I assembled a robotic car that can be controlled by hand motions and signs. This is possible because of an accelerometer that is attached to the back of a user's hand that allows the movements of the user's hand to be tracked and flex sensors on each of the user's four main fingers to detect flexing of the fingers. With these detection systems, the user can control the car by tilting their hand and flexing their fingers into certain signs to change the car's movement and speed.
+The biggest challenges I encountered were the complex circuitry and connections between the boards and parts and coding with the Arduino. I had no experience with either of these things, but I am proud to say that after completing this project, I now know quite a bit about these two concepts.
+If I had more time to work on this project, I would try to make the movements a bit cleaner and adjust some of the code to make the glove's controlling system easier to use and more accurate. 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -45,7 +47,7 @@ In this project, I assembled a robotic car that can be controlled by hand motion
 
 - Changed original code to take in input from the flex sensors and send that info to the car
 - Added new commands to change the car's speed when flex motion detected
-- Added a new "donut" command that would allow the car to spin when a certain symbol was made with my hand (detected with the flex sensors)
+- Added a new "dance" command that would allow the car to do a little dance when a certain symbol was made with my hand (detected with the flex sensors)
 - Completed wiring of flex sensors to glove
 - Changed the motor pin wiring to allow their movement speed to be altered
 - Finally, my project was finished!
@@ -128,6 +130,19 @@ Code for the glove/controller:
 
 int16_t accelX, accelY, accelZ;
 
+//analog pins that flex sensors are in
+int f1 = 4;
+int f2 = 5;
+int f3 = 0; 
+int f4 = 1;
+
+//variables to store flex reading
+int r1;
+int r2;
+int r3;
+int r4;
+
+
 void setup() 
 {
   Wire.begin();
@@ -144,7 +159,9 @@ void setup()
 }
 
 void loop() {
+  //main code
   readAccelerometerData();
+  readFsr();
   determineGesture();
   delay(500);
 }
@@ -164,20 +181,36 @@ void readAccelerometerData()
 
 void determineGesture()
 {
-  //determines movement based on accel data
-  if (accelX >= 6500)
+  //determines command based on accel or flex sensor data
+  if (r1 < 250 && r2 > 200 && r3 > 270 && r4 > 220)
+  {
+    Serial1.write('1');
+  }
+  else if (r1 < 250 && r2 < 210 && r3 > 270 && r4 > 230)
+  {
+    Serial1.write('2');
+  }
+  else if (r1 < 250 && r2 < 210 && r3 < 280 && r4 > 230)
+  {
+    Serial1.write('3');
+  }
+  else if (r1 < 230 && r2 > 210 && r3 > 270 && r4 < 215)
+  {
+    Serial1.write('d');
+  }
+  else if (accelX >= 8000)
   {
     Serial1.write('b');
   }
-  else if (accelX <= -3500)
+  else if (accelX <= -8000)
   {
     Serial1.write('f');
   }
-  else if (accelY <= -3000)
+  else if (accelY <= -4000)
   {
     Serial1.write('l');
   }
-  else if (accelY >= 3250)
+  else if (accelY >= 5000)
   {
     Serial1.write('r');
   }
@@ -185,6 +218,15 @@ void determineGesture()
   {
     Serial1.write('s');
   }
+}
+
+void readFsr()
+{
+  //reads flex sensor input
+  r1 = analogRead(f1);
+  r2 = analogRead(f2);
+  r3 = analogRead(f3);
+  r4 = analogRead(f4);
 }
 ```
 
@@ -196,18 +238,21 @@ Code for the car:
 
 SoftwareSerial BT_Serial(rx, tx); // RX pin, TX pin
 
-char receive = "";
+char receive = ""; //variable that command is stored in
 
-int AIA = 10; //front left back
-int AIB = 9 ;//front left forward
-int BIA = 11; //back left back
-int BIB = 12; //back left forward
-int aia = 4;//back right forward
-int aib = 5; //back right back
-int bia = 6; //front right forward
-int bib = 7; //front right back
+int AIA = 4; //front left speed
+int AIB = 9; //front left directional
+int BIA = 12; //back left speed
+int BIB = 11; //back left directional
+int aia = 10; //back right speed
+int aib = 8; //back right directional
+int bia = 6; //front right speed
+int bib = 7; //front right directional
 
-void setup() {
+int sp = 255; //speed begins at max but can be changed
+
+void setup() 
+{
   //begins communication between bluetooth modules
   Serial.begin(38400);
   BT_Serial.begin(38400);
@@ -236,6 +281,22 @@ void loop() {
   //switches receive variable to whatever case is determined
   switch(receive)
   {
+    case '1':
+      accel(150);
+      break;
+
+    case '2':
+      accel(200);
+      break;
+    
+    case '3':
+      accel(255);
+      break;
+    
+    case 'd':
+      dance();
+      break;
+    
     case 'f':
       forward();
       break;
@@ -255,27 +316,29 @@ void loop() {
     case 's':
       stop();
   }
+
 }
+
 
 //turns motors off and on accordingly per movement
 void forward()
 {
+  analogWrite(AIB, sp);
   digitalWrite(AIA, LOW);
-  digitalWrite(AIB, HIGH);
+  analogWrite(BIB, sp);
   digitalWrite(BIA, LOW);
-  digitalWrite(BIB, HIGH);
-  digitalWrite(aia, HIGH);
+  analogWrite(aia, sp);
   digitalWrite(aib, LOW);
-  digitalWrite(bia, HIGH);
+  analogWrite(bia, sp);
   digitalWrite(bib, LOW);
 }
 
 void backward()
 {
-  digitalWrite(AIA, HIGH);
   digitalWrite(AIB, LOW);
-  digitalWrite(BIA, HIGH);
+  digitalWrite(AIA, HIGH);
   digitalWrite(BIB, LOW);
+  digitalWrite(BIA, HIGH);
   digitalWrite(aia, LOW);
   digitalWrite(aib, HIGH);
   digitalWrite(bia, LOW);
@@ -316,6 +379,26 @@ void stop()
   digitalWrite(aib, LOW);
   digitalWrite(bia, LOW);
   digitalWrite(bib, LOW);
+}
+
+//extra dance command
+void dance()
+{
+  for(int i = 0; i < 2; i++)
+  {
+  turnLeft();
+  delay(1000);
+  stop();
+  delay(500);
+  turnRight();
+  delay(1250);
+  }
+}
+
+//changes speed of car based on parameter (s is in bytes; 0 - 255)
+void accel(int s)
+{
+  sp = s;
 }
 ```
 
