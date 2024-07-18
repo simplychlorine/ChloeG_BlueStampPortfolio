@@ -65,7 +65,7 @@ This project was very fun to complete, but also one of the most challenging thin
 # Schematics 
 <!--Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
 ![Glove Schematic](/ChloeG_BlueStampPortfolio/schematics.jpg)
-![Car Schematic](/ChloeG_BlueStampPortfolio/schematics(1).jpg)
+![Car Schematic](/ChloeG_BlueStampPortfolio/car.jpg)
 
 
 # Code
