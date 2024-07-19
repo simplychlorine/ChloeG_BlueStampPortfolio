@@ -8,7 +8,7 @@ If I had more time to work on this project, I would try to make the movements a 
 |:--:|:--:|:--:|:--:|
 | Chloe G. | Carondelet High School | Engineering | Incoming Junior
 
-![Headstone Image](/ChloeG_BlueStampPortfolio/pfp.HEIC)
+![Headstone Image](/ChloeG_BlueStampPortfolio/profile.png)
 
 
 # First Milestone
